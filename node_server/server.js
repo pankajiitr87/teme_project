@@ -2,15 +2,15 @@ const express = require('express');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const admin = require('firebase-admin');
-
+require('dotenv').config();
 const app = express();
 const port = process.env.PORT || 3015;
 
 // Initialize Firebase app with downloaded credentials
 // path to serviceAccount.json
-path_serviceAccount = 'D:\\teme_project\\node_server\\whatsappmy-40c21-firebase-adminsdk-wsbe4-b8384ecc15'
+// path_serviceAccount = 'D:\\teme_project\\node_server\\whatsappmy-40c21-firebase-adminsdk-wsbe4-b8384ecc15'
 admin.initializeApp({
-  credential: admin.credential.cert(require(path_serviceAccount)),
+  credential: admin.credential.cert(require(process.env.GOOGLE_APPLICATION_CREDENTIALS)),
   databaseURL: 'https://whatsappmy-40c21-default-rtdb.firebaseio.com/'
 });
 
